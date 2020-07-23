@@ -1,0 +1,24 @@
+1.set up proj -> as previous
+2.create model
+3.create new route to user
+4.create new controller
+5.test api
+6.@controller
+	registerUser --> check duplicate username 
+			 if already have status(400)
+			 else bcrypt pass then create and send status(201)
+				Bcrypt usage	1.generate salt => bcrptjs.genSaltSync(12)
+						2.hashPass => bcryptjs.hashsync(password//from body, salt)
+	login	-------> find user
+			 if don't have status(400) message "username or pass is wrong"
+			 else check password
+				how to		bcryptjs.compareSync(password, findOne(user).password)
+				if true send token + payload
+						how to		create payload(custom)
+								crete token with jsonwebtoken
+				else send status(400) message "username or password is wrong"
+7.check isValid token	-->	create passport folder and js file n config folder
+				use passport and JWT passport
+8.add auth middleware be4 use in routes that we want
+9.correction controller (user can CRUD only own item)
+10.config dotenv
