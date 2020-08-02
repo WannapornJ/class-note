@@ -1,0 +1,26 @@
+npm init -y to get package.json
+then npm i dotenv express passport passport-jwt sequelize sequelize-cli mysql2 jsonwebtokent bcryptjs
+
+login and registry system
+    register
+        1st step        รับ username name and password from input
+        2nd             check duplicate username
+                        if (isDuplicate) status(400)
+                        else use bcryptjs.gensaltsync hash password and store it with username name to database [use db.user.create]
+    
+    login               
+                        รับ username password
+                        check exist username
+                        if (found) return password 
+                        compare password with bcrpytjs.compareSync
+                        if (found && isPassword) return token jwt.sign(payload = id, name; secretKey, {expiresIn: ms})
+                        
+config => passport
+    passport            
+                        ถอด secret key check isRealToken
+                        use jwtStrategy
+                        
+app route
+                        use auth to be a middle route between path and controller
+                        
+index => route => controller (use model)
